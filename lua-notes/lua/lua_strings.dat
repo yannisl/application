@@ -1,0 +1,99 @@
+<!--
+{{feature: It's only the last turn of a bolt that tightens it - the rest is
+just movement...
+Shigeo Shingo
+}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Conditional Operators</h2>
+
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code>
+if N == 1 then
+   print("N is one")
+elseif N == 2 then
+   print("N is two")
+elseif N == 3 then
+   print("N is three")
+else
+   print("N is neither one nor two nor three")
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+Why is it that different languages use different concatenation operators? With Lua you can join two strings (concatenate) by using the (__..__) operator. This is a bit strange, but nevermind! Try the example below.
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+
+<code class="PHP">
+--  string concatenation
+Message1='Hello'
+Message2='Lua'
+Message3='People'
+print(Message1 .. " " .." "..Message2.." ".. Message3.."&lt;br/&gt")
+print(Message1 .. " " ..  Message3.."&lt;br/&gt")
+
+</code>
+
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+##Escaping Strings
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+
+<code class="PHP">
+--  string concatenation
+Message1=" \"Hello\"  John\'s   "
+print(Message1)
+</code>
+
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+We can also use the string standard library to manipulate strings.
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+--  string concatenation
+Message1=" \"Hello\"  John\'s   "
+print(string.lower(Message1))
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              

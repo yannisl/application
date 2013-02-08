@@ -1,0 +1,86 @@
+<!--
+{{feature: .. Simplicity the art of maximizing the amount of work not done. The Agile Manifesto}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Tables</h2>
+Lua uses tables (which are a kind of associative array) a generic data type.
+
+Tables are the
+main (in fact, the only) data structuring mechanism in Lua, and a powerful
+one. Tables can be used not only to represent ordinary arrays, but also symbol
+tables, sets, records, queues, and other data structures, in simple and efficient
+ways.
+
+Tables in Lua are neither values nor variables, but {{em:objects}}. If you are familiar
+with arrays in Java or Scheme, then you have a fair idea of what we mean by
+objects. However, if your idea of an array comes from C or Pascal, you have
+to open your mind a bit. You may think of a table as a dynamically allocated
+object; your program only manipulates references (or pointers) to them. 
+
+ There
+are no hidden copies or creation of new tables behind the scenes. Moreover, you
+do not have to declare table; in fact, there is no way to declare anything in Lua. Tables are only created by means of constructor expressions, which in its
+simplest form is written as <tt>{}</tt>:
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- tables in Lua
+NameToInstr = {["John"] = "rhythm guitar",
+                      ["Paul"]  = "bass guitar",
+                      ["George"] = "lead guitar",
+                      ["Ringo"] = "drumkit" }
+ print(NameToInstr["Paul"])
+
+-- creates a new table, and stores a reference to it in 'a'
+a = {}
+k = "x"
+a[k] = 10 -- new field, with key="x" and value=10
+a[20] = "great" -- new field, with key=20 and value="great"
+print(a["x"]) --> 10
+k = 20
+print(a[k]) --> "great"
+a["x"] = a["x"]+1 -- increments field "x"
+print(a["x"]) --> 11
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+When a program has no references left to a table, Lua memory management
+will eventually deletes it, and reuse its memory.
+Each table may store values with different types of indices, and it grows as
+it needs to accommodate new fields:
+
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- tables in Lua
+NameToInstr = {["John"] = "rhythm guitar",
+                      ["Paul"]  = "bass guitar",
+                      ["George"] = "lead guitar",
+                      ["Ringo"] = "drumkit" }
+for k,v in pairs (NameToInstr) do 
+    print(k..' '..v..'&lt;br /&gt;') 
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               

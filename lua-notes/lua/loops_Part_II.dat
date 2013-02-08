@@ -1,0 +1,125 @@
+<!--
+{{feature: It's only the last turn of a bolt that tightens it - the rest is
+just movement...
+Shigeo Shingo
+}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Practicing the while loop</h2>
+
+A common problem used in computer classes is the 100 beer problem. This problem counts bottles and prints out I the entire "99 bottles of beer on the wall" song. Try variations to this theme. The code prints only 10 so not to overfill the sandbox.
+
+
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+local bottles = 10
+ 
+local function plural (bottles) if bottles == 1 then return '' end return 's' end
+while bottles > 0 do
+    print (bottles..' bottle'..plural(bottles)..' of beer on the wall')
+    print (bottles..' bottle'..plural(bottles)..' of beer')
+    print ('Take one down, pass it around')
+    bottles = bottles - 1
+    print (bottles..' bottle'..plural(bottles)..' of beer on the wall')
+    print ()
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+The *for loop*
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+counter = 0
+for  counter = 1, 10 do
+   print(counter)
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+You can also use a *step*
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+counter = 0
+for  counter = 2, 10, 0.5 do
+   print(counter)
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+The *repeat-until loop* will execute at least once
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+counter = 0
+repeat
+   print(counter)
+   counter = counter +1
+until counter>10
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+The *break* statement
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+counter = 0
+repeat
+   print(counter)
+   counter = counter +1
+   if counter > 5 then 
+      break
+   end
+until counter>10
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+A common syntax error is to forget the *do* in a *loop* or the *then* in an if statement.
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

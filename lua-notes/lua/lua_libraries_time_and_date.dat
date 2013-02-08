@@ -1,0 +1,123 @@
+<!--
+{{feature: .. Simplicity the art of maximizing the amount of work not done. The Agile Manifesto}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Time and Date</h2>
+Two functions, time and date, do all date and time queries in Lua.
+
+The time function, when called without arguments, returns the current date and time, coded as a number. (In most systems, that number is the number of seconds since some epoch.) When called with a table, it returns the number representing the date and time described by the table. Such date tables have the following significant fields:
+
+Such <em>date tables</em> have the following significant fields:
+
+<table align="center" border=1> 
+<tr><td><year</td><td>a full year</td></tr> 
+<tr><td>month</td><td>01-12</td></tr> 
+<tr><td>day</td><td>01-31</td></tr> 
+<tr><td>hour</td><td>01-31</td></tr> 
+<tr><td>min</td><td>00-59</td></tr> 
+<tr><td>sec</td><td>00-59</td></tr> 
+<tr><td>isdst</td><td>a boolean, <B>true</B> if daylight saving</td></tr> 
+</table>
+
+The first three fields are mandatory;
+the others default to noon (12:00:00) when not provided.
+ 
+In a Unix system (where the epoch is 00:00:00 UTC, January 1, 1970)
+running in Rio de Janeiro (which is three hours west of Greenwich),
+we have the following examples:
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+ -- obs: 10800 = 3*60*60 (3 hours)
+    print(os.time{year=1970, month=1, day=1, hour=0})
+      --> 10800
+    print(os.time{year=1970, month=1, day=1, hour=0, sec=1})
+      --> 10801
+    print(os.time{year=1970, month=1, day=1})
+      --> 54000   (obs: 54000 = 10800 + 12*60*60)
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+All date and time queries in Lua are done through a single function, called date.
+This function gets as argument a format string, and returns a copy of this string
+where specific tags have been replaced by information about time and date. All
+tags are represented by a % followed by a letter; for instance
+
+
+The following table shows each tag, its meaning, and an example of its value for
+September 16, 1998 (a Wednesday), at 23:48:10. For numeric values, the table
+also shows the range of possible values.
+
+<table align="center" border=1> 
+<tr><td>%a</td><td>abbreviated weekday name (e.g., Wed)</td></tr> 
+<tr><td>%A</td><td>full weekday name (e.g., Wednesday)</td></tr> 
+<tr><td>%b</td><td>abbreviated month name (e.g., Sep)</td></tr> 
+<tr><td>%B</td><td>full month name (e.g., September)</td></tr> 
+<tr><td>%c</td><td>date and time (e.g., 09/16/98 23:48:10)</td></tr> 
+<tr><td>%d</td><td>day of the month (16) [01-31]</td></tr> 
+<tr><td>%H</td><td>hour, using a 24-hour clock (23) [00-23]</td></tr> 
+<tr><td>%I</td><td>hour, using a 12-hour clock (11) [01-12]</td></tr> 
+<tr><td>%M</td><td>minute (48) [00-59]</td></tr> 
+<tr><td>%m</td><td>month (09) [01-12]</td></tr> 
+<tr><td>%p</td><td>either "am" or "pm" (pm)</td></tr> 
+<tr><td>%S</td><td>second (10) [00-61]</td></tr> 
+<tr><td>%w</td><td>weekday (3) [0-6 = Sunday-Saturday]</td></tr> 
+<tr><td>%x</td><td>date (e.g., 09/16/98</code>)</td></tr> 
+<tr><td>%X</td><td>time (e.g., 23:48:10</code>)</td></tr> 
+<tr><td>%Y</td><td>full year (1998)</td></tr> 
+<tr><td>%y</td><td>two-digit year (98)  [00-99]</td></tr> 
+<tr><td>%%></td><td>the character `%&acute;</td></tr> 
+</table>
+
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+print(os.date("today is %A; minutes = %M"))
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+More than one values can be returned as shown below.
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+
+function f(a, b) 
+ local d=a*a
+  return a+b, a*b
+end
+
+x,y = f(3,3)
+print(x,y)
+
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

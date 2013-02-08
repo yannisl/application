@@ -1,0 +1,204 @@
+<!--
+{{feature: .. Simplicity the art of maximizing the amount of work not done. The Agile Manifesto}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Functions</h2>
+
+Lua can bind to all C standard libraries, for example the standard math library can be used as per the example below:
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+
+print(math.sin(90))
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+function foo(n) return n*2 end
+print(foo(7))
+
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+More than one values can be returned as shown below.
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+
+function f(a, b) 
+ local d=a*a
+  return a+b, a*b
+end
+
+x,y = f(3,3)
+print(x,y)
+
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+Some programmers use a notation for arguments that start with an underscore. It is a convention and not a requirement.
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+a = 'vorher'
+function summe( _v1, _v2)
+	local a = _v1 + _v2
+	return  a
+end
+
+print( summe( 1, 2 ) )
+print( a )
+print( _v1 )
+
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+Functions are values:
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+a = 'vorher'
+z = function summe( _v1, _v2)
+	local a = _v1 + _v2
+	return  a
+end
+
+print(z)
+
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+###Anonymous Functions
+Anonymous functions in Lua are very similar to those in JavaScript. You can have a self-executing function as follows:
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+(function (a,b)
+print(a+b) end)(3,3)
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+###Variadic Functions
+
+Functions in Lua can receive a variable number of arguments. For instance, you have already called print with one, two, and more arguments.
+
+Lua functions are very tolerant of extra arguments; you could take a function of no arguments and pass it arguments, and they will be simply discarded.
+
+The syntax of functions taking an indefinite number of arguments ('variadic functions') is the same as in C:
+
+{{example:
+function vararg1(arg1,...)
+  local arg = {...}
+  -- use arg as a table to access arguments
+end
+}}
+
+What is ...? It is shorthand for all the unnamed arguments. So function I(...) return ... end is a general 'identity' function, which takes an arbitrary number of arguments and returns these as values. In this case, {...} will be filled with the values of all the extra arguments.
+
+But, vararg1 has a not-so-subtle problem. nil is a perfectly decent value to pass, but will cause a hole in the table arg, meaning that # will return the wrong value.
+
+A more robust solution is:
+
+{{plain:
+function vararg2(arg1,...)
+  local arg = &#123;n=select('#',...),...&#125;
+  -- arg.n is the real size
+  for i = 1,arg.n do
+    print(arg[i])
+  end
+end
+}}
+
+Here we use the select function to find out the actual number of arguments passed.
+
+You will sometimes see this in older code, which is equivalent to vararg2:
+
+{{example:
+function vararg3(arg1,...)
+  for i = 1,arg.n do
+    print(arg[i])
+  end
+end
+}}
+
+However, arg used in this special way is deprecated, and it will not work with LuaJIT, and may well break in Lua 5.2.
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- variadic functions in Lua
+function vararg2(arg1,...)
+  local arg = {n=select('#',...),...}
+  -- arg.n is the real size
+  for i = 1,arg.n do
+    print(arg[i])
+  end
+end
+vararg2("A","1 ","2 ","3 ","4 ");
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

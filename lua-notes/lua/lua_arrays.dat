@@ -1,0 +1,155 @@
+<!--
+{{feature: It's only the last turn of a bolt that tightens it - the rest is
+just movement...
+Shigeo Shingo
+}}
+{{feature-image:/codeigniter/images/lenna.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Arrays</h2>
+You can implement arrays in Lua simply by indexing tables with integers, because of this 
+"arrays" do not have a fixed size, but grow as you need. When you
+initialize the array you indirectly define its size. 
+
+
+It is important to understand that Lua _does not have an array type_. We simply use tables.
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="php">
+l = {}
+ -- Index starts with 1
+l[1] = 1     
+
+l[0] = 'zero' -- But you can use zero also
+
+l[10] = 2     -- Indexes need notbe continuous
+
+l.a = 3       -- Treated as l['a']. Any object can be used as index
+
+l[l] = l      --  any object can be used as an index. Even other tables
+
+for i,v in next,l do print (i,v) 
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="php">
+-- an array is created using {}
+-- you populate by assignment
+
+a = {}   -- new array
+for i=1,1000 do
+   a[i] = i+2
+end
+print(a[10])
+print(a[100])
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+However, it is customary in Lua to start arrays with index 1. Many functions
+in the Lua libraries (e.g. sort and tinsert) adhere to this convention, and so,
+if your arrays also start with 1, you will be able to use those functions directly.
+
+This of course goes contrary to what many people think. Djikstra wrote a paper for this
+[Edsger Dijkstra's note on starting array indices at 0 (pdf, 1982) ](http://news.ycombinator.com/item?id=2679769) and there was a lot of discussion and excitement at HN. Anyway this is the convention in Lua books and libraries.
+
+We can use constructors to create and initialize arrays in a single expression:
+
+Such constructors can be as large as you need (well, up to a few million elements).
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+
+<code class="PHP">
+--  squares
+squares = {0, 1, 4, 9, 16, 25, 36, 49, 64, 81}
+print(squares[4])
+</code>
+
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+##Matrices and Multi-dimensional Arrays
+There are two main ways to represent matrices in Lua. The first one is to
+use an array of arrays, that is, a table wherein each element is another table.
+For instance, you can create a matrix of zeros with dimensions N, M with the
+following code:
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+mt = {} -- create the matrix
+for i=1,N do
+    mt[i] = {} -- create a new row
+for j=1,M do
+   while j <= M do
+     mt[i][j] = 0
+end
+end
+
+mt = {} -- create the matrix
+for i=1,N do
+for j=1,M do
+mt[i*M+j] = 0
+end
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+Remember that tables are objects in Lua. You have to explicitly create each row to create
+a matrix. At one hand, this is certainly more verbose than simply declaring a
+matrix, as you do in C or Pascal. On the other hand, that gives you more
+flexibility. For instance, you can create a diagonal matrix changing the line
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+mt = {} -- create the matrix
+for i=1,5 do
+for j=1,5 do
+mt[i*M+j] = 0
+end
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

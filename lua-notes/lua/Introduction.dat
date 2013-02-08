@@ -1,0 +1,136 @@
+<!--
+{{feature: .. Simplicity the art of maximizing the amount of work not done. The Agile Manifesto}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Introduction</h2>
+
+My first brush with Lua was with LuaTeX and LuaLaTeX an extension of the TeX and friends typesetting system developed by Knuth and the TeX community.
+
+Currently, many languages are concerned with how to help you write programs
+with hundreds of thousands of lines. For that, they offer you {{wi:package}}s, name
+spaces, complex type systems, myriads of constructions, and thousands of documentation
+pages to be studied.
+
+Lua does not try to help you write programs with hundreds of thousands of
+lines. Instead, Lua tries to help you solve your problem with only hundreds of
+lines, or even less. To achieve this aim, Lua relies on extensibility, like many
+other languages. But, unlike most other languages, Lua is easily extended not
+only with software written in Lua itself, but also with software written in other
+languages, such as C/C++.
+
+Lua was designed, from the beginning, to be easily integrated with software
+written in C and other conventional languages. This duality of languages
+brings many benefits. Lua is a very small and simple language, partially because
+it does not try to do what C is already good for, such as sheer performance, low
+level operations, or interface with third-party software. Lua relies on C for those
+tasks. What Lua offers you is what C is not good for: a good distance from the
+hardware, dynamic structures, no redundancies, ease of testing and debugging.
+For that, Lua has a secure environment, automatic memory management, and
+great facility to handle strings and other kinds of data with dynamic size.
+More than being an extensible language, Lua is mainly a glue language.
+
+Lua supports a component-based approach to software development, where we
+create an application by gluing together high-level components. Usually, these
+components are written in a a compiled, statically typed language, such as
+C or C++; Lua is the glue we use to compose and connect those components.
+Usually, the components (or objects) represent more concrete, low level concepts
+(such as widgets and data structures), which are not subject to many changes
+during program development, and which take the bulk of the CPU time of the
+final program. Lua gives the final shape of the application, which will probably
+change a lot during the life-cycle of the product. But, unlike some other glue
+technologies, Lua is a full-fledged language as well. Therefore, we can use Lua
+not only to glue components, but also to adapt and reshape them, or even to
+create whole new components
+
+
+Of course, Lua is not the only scripting language around. There are other
+7
+8 CHAPTER 1. INTRODUCTION
+languages that you can use for more or less the same purposes, such as Perl,
+Tcl, Ruby, Forth, or Python. The following features set Lua apart from these
+languages; although some other languages share some of these features with
+Lua, no other language offers a similar profile:
+Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¿Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢ Extensibility: the extensibility of Lua is so remarkable that many people
+regard Lua not as a language, but as a kit for building domain specific languages.
+Lua has been designed from scratch to be extended both through
+Lua code and through external C code. As a proof of concept, it implements
+most of its own basic functionality through external libraries. It is
+really easy to interface Lua with C (or other language).
+Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¿Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢ Simplicity: Lua is a simple and small language. It has few (but powerful)
+concepts. That makes Lua easy to learn, and also makes for a small
+implementation.
+Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¿Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢ Efficiency: Lua has a quite efficient implementation. Several benchmarks
+show Lua as one of the fastest languages in the realm of scripting (interpreted)
+languages.
+Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¿Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã�Â¯Ã�ï¿½Ã�Â¿Ã�ï¿½Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�Â¯Ã�Â¿Ã�Â½Ã�ï¿½Ã¯Â¿Â½Ã�ï¿½Ã�Â¢ Portability: when we talk about portability, we are not talking about a
+program that runs both in Windows and Unix platforms. We are talking
+about a program that runs in all platforms we ever heard about: NextStep,
+OS/2, PlayStation II (Sony), Mac ??, BeOS, MS-DOS, OS-9, OSX, EPOC,
+PalmOS, plus of course all flavors of Unix (Linux, Solaris, SunOS, AIX,
+ULTRIX, IRIX) and Windows (3.1, NT, 95, 98, 2000, Millenium Edition).
+The source code for each of these platforms is virtually the same. Lua does
+not use #ifs to adapt its code to different machines; instead, it sticks to
+the standard ANSI (ISO) C. That way, usually you do not need to adapt
+it to a new environment: If you have an ANSI C compiler, you just have
+to compile Lua.
+
+Typically, Lua users fall into three broad groups: those that use Lua already
+{{em:embedded}} in an application program, those that use Lua stand alone, and
+those that use Lua and C together.
+
+Many people use Lua embedded in an application program, such as <a href="http://keplerproject.github.com/cgilua/">CGILua</a>
+
+(for building dynamic Web pages), LuaMan (for network management), or LuaOrb
+(for accessing CORBA objects). These applications use Lua's API to
+register new functions, and tag methods (also called fallbacks) to create new
+types and to change the behavior of some language operations, configuring Lua
+for their specific domain. Frequently, the users of such applications do not even
+know that Lua is an independent language adapted for that domain; for instance,
+CGILua users tend to think of Lua as a language specifically designed
+for the Web.
+
+
+Lua is also useful as a stand-alone language, mainly for text-processing and quick-
+{{wi: quick-and-dirty}} little programs. For such uses, the main functionality of Lua
+comes from its standard libraries, which offer pattern-matching and other functions
+for string handling. In fact, we can regard the stand-alone language as the
+embedding of Lua in the domain of string and (text) file manipulation.
+Finally, there are those programmers that work on the other side of the
+bench, writing applications that use Lua as a library. Those people will program
+more in C than in Lua, although they need a good understanding of Lua to create
+interfaces which are simple, ease to use, and well integrated with the language.
+
+Although this book focuses on the stand-alone use of the language, most
+techniques described here can be applied when Lua is being used embedded
+into another application.
+
+##LuaRocks
+
+<a href="http://luarocks.org/LuaRocks">LuaRocks</a>allows you to install Lua modules as self-contained packages called {{em:rocks}} which also contain version dependency information. 
+
+This information is used both during installation, so that when one rock is requested all rocks it depends on are installed as well, and at run time, so that when a module is required, the correct version is loaded. LuaRocks supports both local and remote repositories, and multiple local rocks trees. LuaRocks is available both for Unix and Windows.
+
+###Useful Tools
+
+One of the amazing things about Lua is it can be used almost anywhere. There is a CNC toolkit available at <a href="http://www.exgenia.com/">exgenia</a>, it can even import dxf files, which are the defacto CAD standard. This can be quite useful, if you like myself have an engineering background.
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

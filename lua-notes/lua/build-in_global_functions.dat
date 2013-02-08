@@ -1,0 +1,37 @@
+<!--
+{{feature: It's only the last turn of a bolt that tightens it - the rest is
+just movement...
+Shigeo Shingo
+}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Build-in global functions</h2>
+
+Lua provides a number of built-in functions. You can view the available functions by viewing the _G table.
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- print all global functions
+for k,v in pairs(_G) do  
+   if type(v) == "function" then   
+      print(k..'&lt;br/&gt;')  
+   end 
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

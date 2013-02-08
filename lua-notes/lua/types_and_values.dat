@@ -1,0 +1,161 @@
+<!--
+{{feature: .. Simplicity the art of maximizing the amount of work not done. The Agile Manifesto}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h2>Types and Values</h2>
+
+Lua is a dynamically typed language. There are no type definitions in the language; each values carries its own type.
+
+There are six basic types in Lua: {{em: nil}}, number, string, userdata, function and <em>table</em>.
+
+Lua does not have a boolean type, nut uses nil to represent false in boolean expressions (any other value is considered true). A global variable has a nil value until you assign it a value.
+
+Number represents real (double-precision floating-point) numbers. There
+is no distinction between integers and floating-point numbers in Lua. Numeric
+constants may be written with an optional decimal part, and an optional decimal
+exponent. Examples of valid numeric constants are:
+
+
+{{snippet:
+  4 4. .4 0.4 4.57e-3 0.3e12 }}
+
+###Tables
+The type table implements associative arrays. An associative array is an
+array that can be indexed not only with numbers, but also with strings or any
+other value of the language (except nil). Also, tables have no fixed size; you
+can dynamically add as many elements as you want to a table. Tables are the
+main (in fact, the only) data structuring mechanism in Lua, and a powerful
+one. Tables can be used not only to represent ordinary arrays, but also symbol
+tables, sets, records, queues, and other data structures, in simple and efficient
+ways.
+
+Tables in Lua are neither values nor variables, but objects. If you are familiar
+with arrays in Java or Scheme, then you have a fair idea of what we mean by
+objects. However, if your idea of an array comes from C or Pascal, you have
+to open your mind a bit. You may think of a table as a dynamically allocated
+object; your program only manipulates references (or pointers) to them. There
+are no hidden copies or creation of new tables behind the scenes. Moreover, you
+do not have to {{em:declare}} a table; in fact, there is no way to declare anything in
+Lua. Tables are only created by means of constructor expressions, which in its
+simplest form is written as {}:
+
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- creates a new table, and stores a reference to it in {{em:a}}
+a = {}
+k = "x"
+a[k] = 10               -- new field, with key="x" and value=10
+a[20] = "great"        -- new field, with key=20 and value="great"
+print(a["x"])            --> 10
+k = 20
+print(a[k])              --> "great"
+a["x"] = a["x"]+1      -- increments field "x"
+print(a["x"])            --> 11
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+A table is always {{em:anonymous}}. There is no fixed relationship between a variable
+that holds a table and the table itself.
+
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- tables are anonymous
+a = {}
+a["x"] = 10
+b = a                -- ‘b’ refers to the same table as ‘a’
+print(b["x"])       --> 10
+b["x"] = 20
+print(a["x"])       --> 20
+a = nil               -- now only ‘b’ still refers to the table
+b = nil               -- now there is no references left to the table
+print(a)
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+Some programmers use a notation for arguments that start with an underscore. It is a convention and not a requirement.
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+a = 'vorher'
+function summe( _v1, _v2)
+	local a = _v1 + _v2
+	return  a
+end
+
+print( summe( 1, 2 ) )
+print( a )
+print( _v1 )
+
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+Functions are values:
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+a = 'vorher'
+z = function summe( _v1, _v2)
+	local a = _v1 + _v2
+	return  a
+end
+
+print(z)
+
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+###Anonymous Functions
+Anonymous functions in Lua are very similar to those in JavaScript. You can have a self-executing function as follows:
+
+<div class="code-block console-wrap"><div class="code-block code"><code class="PHP">
+-- program to demonstrate
+-- functions in Lua
+(function (a,b)
+print(a+b) end)(3,3)
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

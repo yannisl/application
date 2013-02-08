@@ -1,0 +1,59 @@
+<!--
+{{feature: It's only the last turn of a bolt that tightens it - the rest is
+just movement...
+Shigeo Shingo
+}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h3>The require function</h3>
+
+You can use <tt>{{em: require}}</tt> to load and run libraries. Roughly <tt>require</tt> does the same job as <tt>dofile</tt>, but with two important differences.
+
+- require searches for the file in the path
+- require controls whether a file has already been run to avoid duplicating work.
+
+Because of these features, require is the preferred function in Lua for loading libraries.
+
+The path used bt require is a little different from typical paths. Most programs use paths as a list of directories where to search for files. However, ANSI C does not have the concept of directories. The path search is a list of patterns, each one of them specifying a alternative way to transform a virtual lfile name. For each pattern a ? is changed to the filename and checks if there is a file with that name; if not, it goes to the next component. The components in a path are separated by semicolons. For instance if the path is 
+
+{{example:
+?;?.lua;c:\windows\?;/usr/local/lua/?/?.lua
+}}
+
+The only things that require fixes is the semicolon (as the component separator) and the interrogation mark; everything else (such as directory separators or file extensions) is defined in the path.
+
+To determine its path, require first checks the global variable LUA_PATH. If the value of LUA_PATH is a string, that string is the path. Otherwise, require checks the environment variable LUA_PATH. Finally, if both checks fail, require uses a fixed path (typically "?;?.lua", although it is easy to change that when you compile Lua).
+
+The other main job of require is to avoid loading the same file twice. For that purpose, it keeps a table with the names of all loaded files. If a required file is already in the table, require simply returns. The table keeps the virtual names of the loaded files, not their real names. Therefore, if you load the same file with two different virtual names, it will be loaded twice. For instance, the command require"foo" followed by require"foo.lua", with a path like "?;?.lua", will load the file foo.lua twice. You can access this control table through the global variable _LOADED. Using this table, you can check which files have been loaded; you can also fool require into running a file twice. For instance, after a successful require"foo", _LOADED["foo"] will not be nil. If you then assign nil to _LOADED["foo"], a subsequent require"foo" will run the file again.
+
+A component does not need to have interrogation marks; it can be a fixed file name, such as the last component in the following path:
+
+{{example:    ?;?.lua;/usr/local/default.lua }}
+
+In this case, whenever require cannot find another option, it will run this fixed file. (Of course, it only makes sense to have a fixed component as the last component in a path.) Before require runs a chunk, it defines a global variable _REQUIREDNAME containing the virtual name of the file being required. We can use these facilities to extend the functionality of require. In an extreme example, we may set the path to something like "/usr/local/lua/newrequire.lua", so that every call to require runs newrequire.lua, which can then use the value of _REQUIREDNAME to actually load the required file.
+
+Reading the environment
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+print(os.getenv("LUA_PATH"))
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

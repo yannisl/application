@@ -1,0 +1,133 @@
+<!--
+{{feature: It's only the last turn of a bolt that tightens it - the rest is
+just movement...
+Shigeo Shingo
+}}
+{{feature-image:/codeigniter/images/underground_thumb.jpg}}
+{{keywords: CodeIgniter,PHP, CodeIgniter, File helper class}}
+{{author:Dr Y Lazarides}}
+{{date:8 September 2008}}
+{{category: PHP, MVC, Parsers}}
+{{snippet:using CodeIgniter's file_helper class}}
+
+-->
+
+
+<h3>Expressions</h3>
+Expressions denote values. Expressions in Lua include the numeric constants
+and string literals, variables, unary and binary operations, and function calls;
+expressions can be also the quite unconventional upvalues, function definitions,
+and constructors.
+
+###Arithmetic Operators
+
+Lua supports the usual arithmetic operators: the binary + (addition), - (subtraction),
+* (multiplication), / (division) and the {{wi:unary}} - (negation). All of
+them operate over real numbers.
+
+Lua also offers partial support for ^ (exponentiation). One of the design
+goals of Lua is to have a tiny core. An exponentiation operation (through the
+pow function in C) would mean that Lua should be linked with the C mathematic
+library. To avoid this, the core of Lua offers only the syntax for the ^
+binary operator, which have the higher precedence among all operations. The
+mathematic library (which is standard, but not part of the Lua core) then gives
+to this operator its expected meaning.
+
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="php">
+a=3
+b=a^0.02
+print(b)
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+However, it is customary in Lua to start arrays with index 1. Many functions
+in the Lua libraries (e.g. sort and tinsert) adhere to this convention, and so,
+if your arrays also start with 1, you will be able to use those functions directly.
+We can use constructors to create and initialize arrays in a single expression:
+
+Such constructors can be as large as you need (well, up to a few million elements).
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+
+<code class="PHP">
+--  squares
+squares = {0, 1, 4, 9, 16, 25, 36, 49, 64, 81}
+print(squares[4])
+</code>
+
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+##Matrices and Multi-dimensional Arrays
+There are two main ways to represent matrices in Lua. The first one is to
+use an array of arrays, that is, a table wherein each element is another table.
+For instance, you can create a matrix of zeros with dimensions N, M with the
+following code:
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+mt = {} -- create the matrix
+for i=1,N do
+    mt[i] = {} -- create a new row
+for j=1,M do
+   while j <= M do
+     mt[i][j] = 0
+end
+end
+
+mt = {} -- create the matrix
+for i=1,N do
+for j=1,M do
+mt[i*M+j] = 0
+end
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+Remember that tables are objects in Lua. You have to explicitly create each row to create
+a matrix. At one hand, this is certainly more verbose than simply declaring a
+matrix, as you do in C or Pascal. On the other hand, that gives you more
+flexibility. For instance, you can create a diagonal matrix changing the line
+
+<div class="code-block console-wrap">
+<div class="code-block code">
+<code class="PHP">
+mt = {} -- create the matrix
+for i=1,5 do
+for j=1,5 do
+mt[i*M+j] = 0
+end
+end
+</code>
+</div>
+<div  id ="msg1" class="msg">
+</div>
+<div class="console"></div>
+<button class="evalPerl">Run Code!</button>
+<ol class="results"></ol> 
+</div>
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

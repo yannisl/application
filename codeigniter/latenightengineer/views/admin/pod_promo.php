@@ -1,0 +1,21 @@
+
+<!--{{feature-image:http://localhost/CodeIgniter/images/boxer.jpg }}-->
+
+<div class="clearfix curvy bordered pl15 draggable resizable" style="width:300px;float:left">
+   
+    <div style="line-height:1.5;width:98%;float:left;margin-left:-7px" class="curvy bordered percent23 shaded">
+         <h4 style="text-align:center;margin:0;padding:0;font-family:arial;font-size:13px;font-weight:bold">Editor's Picks</h4>
+        <img src="http://localhost/CodeIgniter/images/shoepolish-01.jpg" style="width:98%;margin-right:8px;margin-left:8px;display:block;float:left" class="shadow"/>
+        The <em class="highlight">three_column</em> panel can fetch and display as many pragraphs of Lorem text for prototyping. There is a similar
+        one available, that also sets some images and headings.
+       The <em class="highlight">three_column</em> panel can fetch and display as many pragraphs of Lorem text for prototyping. There is a similar
+        one available, that also sets some images and headings.
+    </div>
+
+    
+
+
+
+
+    <!--end container -->
+</div>

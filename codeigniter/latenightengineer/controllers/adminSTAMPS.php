@@ -216,7 +216,7 @@ function xcopy( $source, $target ) {
                   $file_name='test',$type='dat'){
         // preview is not saving TODO
 
-echo $title;break;
+
 
         if ($action=='preview'){
             redirect('/Blogs/stamps/'.$dir.'/'.$title);
@@ -318,10 +318,10 @@ echo $title;break;
             $content=$_POST['content'];
             $file_name=$_POST['save_as'];
             $data=$_POST;
-            echoPRE('C://www/application/codeigniter/'.$portal.'/'.$dir.'/'.$filename);break;
-            $this->save_post_data('C://www/application/codeigniter/'.$portal.'/'.$dir, $filename, $content); //.dat file
+            $this->save_post_data('../'.$portal.'/',$dir, $title, $content); //.dat file
             //$this->save_tex_data($dir, $filename, $content); //.tex file
-            redirect('/Blogs/stamps/'.$portal.'/'.$dir.'/'.$file_name);
+            //redirect('/Blogs/stamps/stamps-notes/guadeloupe/1947_Imperforates');
+            redirect('/Blogs/stamps/'.$portal.'/'.$dir.'/'.$title);
         }
         
         /*

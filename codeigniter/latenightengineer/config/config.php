@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://127.0.0.1/CodeIgniter/application/";
+$config['base_url']	= "http://127.0.0.1/CodeIgniter/"; //no need to add application handled by Apache
 //$config['base_server']=$_SERVER['SERVER-PATH'];
 /*
 |--------------------------------------------------------------------------

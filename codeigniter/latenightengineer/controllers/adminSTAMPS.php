@@ -6,11 +6,11 @@
 ## - clones documents
 ## - responsible for all edit/save/delete functions
 
-define("ROOT",'C:/wamp/www/');
+define("ROOT",'C:/wamp/www/application/');
 //define("COLLECTION",'C:/wamp/www/countries/');
 define("MASTER_TEX_TEMPLATES",'../tex-templates/');
-define("CSS_PATH",'C:/wamp/www/CodeIgniter/css/');
-define('JS_PATH','C:/wamp/www/CodeIgniter/js/');
+define("CSS_PATH",'C:/wamp/www/application/CodeIgniter/css/');
+define('JS_PATH','C:/wamp/www/application/CodeIgniter/js/');
 
 define('TEX_PREAMBLE_FILE','preamble.tex');
 

@@ -40,6 +40,11 @@
 *.xcf
 *.gz(busy)
 *.db
+
+#netbeans files
+#properties
+
+nbproject/
 ci-notes/
 clojure-notes/
 cms/

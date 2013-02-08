@@ -660,15 +660,15 @@ function _readini($portal, $location){
     ## and read defaults from there. Updated for portals
     ##
     ##
-    $src = "c://wamp/www/".$portal.'/'.$location.'/'.$location.".ini";
+    $src = "c://wamp/www/application/".$portal.'/'.$location.'/'.$location.".ini";
     //echo $src;break;
-    $src_default = "c://wamp/www/tex-templates/settings.ini";
+    $src_default = "c://wamp/www/application/tex-templates/settings.ini";
     if (file_exists($src)) {
        $ini_array = parse_ini_file($src, true);
      } else {
        // echo $src;break;
        $ini_contents = file_get_contents($src_default);
-       file_put_contents('C:/wamp/www/'.$portal.'/'.$location.'/'.$location.'.ini',$ini_contents);
+       file_put_contents('C:/wamp/www/application/'.$portal.'/'.$location.'/'.$location.'.ini',$ini_contents);
        $ini_array = parse_ini_file($src_default, true);
 
     }

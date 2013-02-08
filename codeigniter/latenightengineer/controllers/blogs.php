@@ -724,11 +724,10 @@ function _common($location='blog',$title="introduction", $portal = "countries", 
    // shows the second navigation button
    $data['nav_button2'] ='show().';
    //$data['nav_button2'] ='';
-
-
    
 	$this->Articlesmodel->article_name="../".$portal."/".$location."/".$title.'.dat';
-	$this->Articlesmodel->article_comments="../".$portal."/".$location."/".$title.'.tlk';
+
+    $this->Articlesmodel->article_comments="../".$portal."/".$location."/".$title.'.tlk';
 
 
     // set path for menu
@@ -803,57 +802,12 @@ function _common($location='blog',$title="introduction", $portal = "countries", 
       $data['list']=$this->Articlesmodel->get_articles_list();
 	  $data['location']=$location;
 
- 
-    ## Check for extended markdown
-    ## write to file with the postable content etc
-    ## first test everything with a fixed file
-    /**
-    $f=$title;
-    $country=$location;
-
-    ## we create two empty files to work with or clear them
-    ## should be at save rather??
-        $res=file_put_contents('C:/wamp/www/countries/'.$country.'/tex/'.$title.'.tex','');
-    $res=file_put_contents('C:/wamp/www/countries/'.$country.'/tex/'.$title.'.html','');
-
-    ## We now build the pandoc string, better to have everything in a
-    ## batch file in the end.
-    ## we read the raw data file -> markdown -> latex -> html
-    $pandoc_input_file='C:/wamp/www/countries/'.$country.'/'.$title.'.dat';
-    $pandoc_output_file='C:/wamp/www/countries/'.$country.'/tex/'.$title.'.tex';
-  ## Also need to add our own filters
-       // $this->filterclass->filterAll($data['content']);
-       // $res=file_put_contents('C:/wamp/www/countries/'.$country.'/tex/'.$title.'.tex',$data['content']);
-        ## get file ready for texing to pdf and save on file.
-        //pandoc -f markdown -t latex hello.txt
-        $t='pandoc -f markdown '.$pandoc_input_file.' -t latex -o'.$pandoc_output_file.' 2>1';
-        $z=shell_exec($t);
-        //echoPRE($z);
-        //break;
-
-        ## to html
-        
-        $pandoc_input_file='C:/wamp/www/countries/'.$country.'/tex/'.$title.'.tex';
-        $pandoc_output_file='C:/wamp/www/countries/'.$country.'/tex/'.$title.'.html';
-        $t='pandoc -f latex '.$pandoc_input_file.' -t html -o' .$pandoc_output_file.' 2>1 ';
-
-        $z = shell_exec($t);
-        //echoPRE($z);
-        
-        $data['content']=file_get_contents('C:/wamp/www/countries/'.$country.'/tex/'.$title.'.html');
-        //echoPRE($data['content']);
-        //break;
-      //$this->output->set_output($template);
-      
-  
-   $time=60*60*24830;
-   $this->output->cache(0);
-     * 
-     */
-   
+   // we show the full directory if edits are allowed
+   // to help in building menus
    if ($this->edit_allowed){
        $data['countrymenu'] = $this->Articlesmodel->get_countrymenu();}
-   else{$data['countrymenu'] = '';}
+    else{$data['countrymenu'] = '';}
+
    $this->load->view('stamps/'.$view,$data);
 
 }

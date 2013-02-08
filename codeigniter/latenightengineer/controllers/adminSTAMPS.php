@@ -212,10 +212,11 @@ function xcopy( $source, $target ) {
 |  
 | 13.12.2012 Y Lazarides
 */
-    function post($action='edit', $portal="countries", $dir="aden",$title='alexander-sheversky',
+    function post($action='edit', $portal="stamp-notes", $dir="monaco",$title='alexander-sheversky',
                   $file_name='test',$type='dat'){
         // preview is not saving TODO
 
+echo $title;break;
 
         if ($action=='preview'){
             redirect('/Blogs/stamps/'.$dir.'/'.$title);

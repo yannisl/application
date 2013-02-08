@@ -215,7 +215,8 @@ function xcopy( $source, $target ) {
     function post($action='edit', $portal="countries", $dir="aden",$title='alexander-sheversky',
                   $file_name='test',$type='dat'){
         // preview is not saving TODO
-                
+
+
         if ($action=='preview'){
             redirect('/Blogs/stamps/'.$dir.'/'.$title);
         }
@@ -242,8 +243,7 @@ function xcopy( $source, $target ) {
 */
         if ($action=='edit'){
 
-            //echo $portal;break;
-            
+                       
             $data['message']='Edit Post';
             $data['content']=(@file_get_contents(ROOT.$portal.'/'.$dir.'/'.$title.'.'.$type));
             $data['content']=htmlentities($data['content']);
@@ -262,6 +262,8 @@ function xcopy( $source, $target ) {
             }
             else{
                 $data['category']=$category;}
+
+            
             $this->load->view('editpostSTAMPS',$data);
         }
 
@@ -308,11 +310,15 @@ function xcopy( $source, $target ) {
 | main.tex exists, it can be used to process the file (see also sandbox).
 | 13.12.2012 Y Lazarides
 */
+        
+         
         if ($action=='save'){
+ 
             $content=$_POST['content'];
             $file_name=$_POST['save_as'];
             $data=$_POST;
-            $this->save_post_data(ROOT.$portal.'/'.$dir, $filename, $content); //.dat file
+            echoPRE('C://www/application/codeigniter/'.$portal.'/'.$dir.'/'.$filename);break;
+            $this->save_post_data('C://www/application/codeigniter/'.$portal.'/'.$dir, $filename, $content); //.dat file
             //$this->save_tex_data($dir, $filename, $content); //.tex file
             redirect('/Blogs/stamps/'.$portal.'/'.$dir.'/'.$file_name);
         }
@@ -479,7 +485,7 @@ function xcopy( $source, $target ) {
         if ($action=='zip'){
             // zip all folders iteratively in $dir
             // force download
-            $folder_name='c://wamp/www/countries/'.$dir.'/';
+            $folder_name='c://wamp/www/application/countries/'.$dir.'/';
          
             // load library
             $this->load->library('zip');

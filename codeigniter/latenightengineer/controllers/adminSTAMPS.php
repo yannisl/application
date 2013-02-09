@@ -314,7 +314,6 @@ function xcopy( $source, $target ) {
         
          
         if ($action=='save'){
- 
             $content=$_POST['content'];
             $file_name=$_POST['save_as'];
             $data=$_POST;

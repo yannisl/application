@@ -80,24 +80,22 @@ class Sets extends Controller {
     else
     {
       $this->this_POST=false;
-    
     }
-   
-   
+     
   }
  
        
  	
- function _table_defaults(){
-	
-	 foreach ($this->fields_data as $field)
-    {
-        $data[$field->name]='';
-   
-    } 
-		return $data;
-	}
-	
+  function _table_defaults(){
+
+      foreach ($this->fields_data as $field)
+      {
+          $data[$field->name]='';
+
+      }
+      return $data;
+  }
+
 	
  
 	

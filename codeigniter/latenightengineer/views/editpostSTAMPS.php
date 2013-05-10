@@ -405,17 +405,7 @@ overflow-x: auto;
 </div><!-- tabs container -->
 </div><!--span-17 -->
 
-
-
-                    
-
-         
-
-
-
-
-
-                   
+                
 </div>
 
 
@@ -428,7 +418,7 @@ overflow-x: auto;
  
 
 <div class="span-5 clearfix" style="margin:0 0 0 15px;float:left">
-                        
+                     
 
                         <label>categories</label>
                         <textarea name="category" rows="100" cols="100" style="width:90%;height:200px;font-family:georgia;font-size:12px;text-indent:0" >
@@ -442,8 +432,7 @@ overflow-x: auto;
                         
                         <input style="color:red" type="submit" name="mysubmit" value="Save" />
                         
-
-                       
+                   
 
 </div>
 

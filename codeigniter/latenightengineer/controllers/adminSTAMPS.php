@@ -281,7 +281,7 @@ function xcopy( $source, $target ) {
             $file_name='untitled';  // with no extension
             if ( ! write_file(ROOT.$portal.'/'.$dir.'/'.$file_name.'.dat', $content))
             {
-                //echo 'Unable to write the file';
+                echo 'Unable to write the file';
             }
             else
             {

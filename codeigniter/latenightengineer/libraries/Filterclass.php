@@ -485,7 +485,7 @@ class Filterclass{
 
     // enter as \ph{image file}{description}
     function includegraphics($text){
-        $pattern="/\\\\includegraphics
+        $pattern="/\\\\includegraphics   # base LaTeX command
                          \[width\=\s*\d*\.*(\d\d*)\\\\(textwidth|linewidth)\]*
                               \{(\.\.)\/
                           \s*([[:alnum:]\/\)\(\,\.\:\_\-\&\s\'\"]+)\}
@@ -683,7 +683,7 @@ if (isset($search[0])&&(!empty($replace[0])))
     // enter as \ph{image file}{description}
     function caption($text){
         $pattern="/\\\\caption\[*([[:alnum:]\/\)\(\,\.\:\-\&\s\'\"\%]+)*\]*
-                 \s*\{([[:alnum:]\/\)\(\>\<\[\]\$\=\,\.\:\/\_\;\+\!\-\&\s\'\"\#\?\\\\]+)*\s*\}\s*  # curly
+                 \s*\{([[:alnum:]\/\)\(\>\<\[\]\$\=\,\.\:\/\_\;\+\!\-\&\*\s\'\"\#\?\\\\]+)*\s*\}\s*  # curly
                  /x";
         $z=preg_replace($pattern,'<div class="small" style="width:100%;display:block;margin:0 auto;line-height:1.4;text-align:none;text-justify:newspape;word-break:hyphenate;clear:both;margin-bottom:10px" >**FIGURE** $2</div>',$text);
         return $z;
@@ -701,7 +701,7 @@ if (isset($search[0])&&(!empty($replace[0])))
 
     //\begin{figure}[]
     function beginfigure($text){
-        $pattern="/\\\\begin\{figure\}\[.*\]/";
+        $pattern="/\\\\begin\{figure\}(\[.+\])*/";
         $z=preg_replace($pattern,'<div style="width:100%;" class="clearfix">
         <div style="width:95%;clear:both;padding-left:0px;padding-right:0px;margin:0 auto;" class="center clearfix">
         ',$text);
@@ -1387,7 +1387,7 @@ $t = "<sup id=\"foot_".$footnote_id."\" class=\"black\"
     function alan($text){
         $pattern="/\\\\alan\[*([[:alnum:]\/\)\(\,\.\:\-\&\s\'\"\%]+)*\]*\{\s*([[:alnum:]\/\)\(\,\.\:\-\&\?\s\'\"]+)\}\{([[:alnum:]\/\)\(\,\.\:\_\#\/\&\;\=\%\-\&\s\'\"\<\>\+\[\]\?]+)\}/";
         $z=preg_replace($pattern,'<div style="width:100%; margin:0 auto">
-               <img src="http://localhost/egypt/queensland/$2"
+               <img src="http://localhost/stamp-images/queensland/$2"
                style="width:$1;margin:0 auto;display:block"/>
                <p class="small center" style="width:90%;margin-bottom:10px">$3</p>
                </div>',$text);

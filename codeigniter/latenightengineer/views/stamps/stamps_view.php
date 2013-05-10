@@ -275,25 +275,13 @@ style="display:block;float:right;border:none" title="Toggle Table of Contents" a
                         <div id="main-content" class="clearfix" >
                             <?php echo $content; ?>
                         </div>
-                        <div style="clear:both"></div>
-                        <div  style="background:#000;color:#fff;width:30%;float:right;margin-bottom:3px">
-                            <!-- NEXT -->
-                            <div class=" draggable clearfix" style="padding-bottom:5px;padding-left:7px;padding-right:7px">
-
-                                <a href="<?php echo $prev?>"><img class="draggable" src="http://localhost/egypt/previous.gif" style="float:left;margin-top:10px" alt= "" title="<?php echo $prev ?>" /></a>
-
-                                <a href="<?php echo $next?>" title="<?php echo $next ?>"><img  src="http://localhost/egypt/next.gif" style="float:right;clear:right;margin-top:10px" alt="" /></a>
-
-                            </div>
+                        
 
 
-
-
-                        </div>
                         <div style="clear:both"></div>
                         <div style="font-size:10px">
-                            <?php echo '<p><a href="http://localhost/CodeIgniter/adminSTAMPS/post/edit/'.$location.'/'.$title.'">edit</a></p>';
-                            echo '<p><a href="http://localhost/CodeIgniter/adminSTAMPS/post/delete/'.$location.'/'.$title.'">delete page</a>';
+                         <?php echo '<p><a href="http://localhost/CodeIgniter/adminSTAMPS/post/edit/'.$portal.'/'.$location.'/'.$title.'">edit</a></p>';
+                            echo '<p><a href="http://localhost/CodeIgniter/adminSTAMPS/post/delete/'.$portal.'/'.$location.'/'.$title.'">delete page</a>';
                             echo '<p><a href="http://localhost/CodeIgniter/adminSTAMPS/menu/edit/'.$portal.'/'.$location.'/'.$title.'">edit side menu</a></p>';
                             $this->benchmark->mark('code_end');
 
